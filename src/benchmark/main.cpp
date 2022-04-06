@@ -48,9 +48,15 @@ int main(int argc, char* argv[]) {
   // Read keys from file
   auto keys = new KEY_TYPE[total_num_keys];
   if (keys_file_type == "binary") {
-    load_binary_data(keys, total_num_keys, keys_file_path);
+    if (!load_binary_data(keys, total_num_keys, keys_file_path)) {
+          std::cerr << "Failed to open " << keys_file_path << std::endl;
+          return 1;
+    }
   } else if (keys_file_type == "text") {
-    load_text_data(keys, total_num_keys, keys_file_path);
+      if (!load_text_data(keys, total_num_keys, keys_file_path)) {
+          std::cerr << "Failed to open " << keys_file_path << std::endl;
+          return 1;
+    }
   } else {
     std::cerr << "--keys_file_type must be either 'binary' or 'text'"
               << std::endl;
