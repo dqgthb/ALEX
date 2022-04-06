@@ -41,7 +41,8 @@ int main(int argc, char* argv[]) {
   auto insert_frac = stod(get_with_default(flags, "insert_frac", "0.5"));
   std::string lookup_distribution =
       get_with_default(flags, "lookup_distribution", "zipf");
-  auto time_limit = stod(get_with_default(flags, "time_limit", "0.5"));
+  //auto time_limit = stod(get_with_default(flags, "time_limit", ".5"));
+  auto time_limit = stod(get_with_default(flags, "time_limit", "100"));
   bool print_batch_stats = get_boolean_flag(flags, "print_batch_stats");
 
   // Read keys from file
