@@ -174,6 +174,9 @@ int main(int argc, char* argv[]) {
     if (workload_elapsed_time > time_limit * 1e9 * 60) {
       break;
     }
+    if (i == total_num_keys) {
+        break;
+    }
   }
 
   long long cumulative_operations = cumulative_lookups + cumulative_inserts;
