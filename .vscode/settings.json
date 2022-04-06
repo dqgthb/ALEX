@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.tmp": "python",
+        "random": "cpp"
+    }
+}
