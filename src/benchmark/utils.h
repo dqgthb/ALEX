@@ -10,6 +10,13 @@ bool load_binary_data(T data[], int length, const std::string& file_path) {
     return false;
   }
   is.read(reinterpret_cast<char*>(data), std::streamsize(length * sizeof(T)));
+  std::cerr << length * sizeof(T) << " bytes requested." << std::endl;
+  if (is) {
+      std::cerr << "all " << is.gcount() << " chars read successfully" << std::endl;
+  }
+  else {
+      std::cerr << "error: only " << is.gcount() << " could be read.";
+  }
   is.close();
   return true;
 }
