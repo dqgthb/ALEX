@@ -13,7 +13,16 @@
 #include "utils.h"
 
 // Modify these if running your own workload
+//// lognormal
+//#define KEY_TYPE long long int
+//
+//// longlat, longitude
 #define KEY_TYPE double
+//
+//// ycsb
+//#define KEY_TYPE unsigned long long int
+
+// Fix payload type to double
 #define PAYLOAD_TYPE double
 
 /*
