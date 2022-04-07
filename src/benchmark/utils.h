@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 #include "zipf.h"
+#include <cassert>
 
 template <class T>
 bool load_binary_data(T data[], int length, const std::string& file_path) {
@@ -60,3 +61,19 @@ T* get_search_keys_zipf(T array[], int num_keys, int num_searches) {
   }
   return keys;
 }
+
+
+// warning! num_actual_inserts == num_lookups_per_batch for fair comparison
+// proof of concept. Might be buggy!
+template <class T>
+T* get_search_keys_just_inserted(T array[], int num_keys, int num_actual_inserts, int num_searches) {
+
+    assert(num_searches == num_actual_inserts);
+  
+  auto* keys = new T[num_searches];
+  for (int i = num_keys - num_actual_inserts, j = 0; i < num_keys; i++, ++j) {
+    keys[j] = array[i];
+  }
+  return keys;
+}
+
