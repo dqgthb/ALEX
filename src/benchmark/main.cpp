@@ -48,10 +48,14 @@ int main(int argc, char* argv[]) {
   auto total_num_keys = stoi(get_required(flags, "total_num_keys"));
   auto batch_size = stoi(get_required(flags, "batch_size"));
   auto insert_frac = stod(get_with_default(flags, "insert_frac", "0.5"));
+  auto insert_frac = stod(get_required(flags, "insert_frac"));
   std::string lookup_distribution =
       get_with_default(flags, "lookup_distribution", "zipf");
   //auto time_limit = stod(get_with_default(flags, "time_limit", ".5"));
+      get_required(flags, "lookup_distribution");
+  //auto time_limit = stod(get_required(flags, "time_limit", ".5"));
   auto time_limit = stod(get_with_default(flags, "time_limit", "100"));
+  auto sorted = get_required(flags, "sorted");
   bool print_batch_stats = get_boolean_flag(flags, "print_batch_stats");
 
   // Read keys from file
