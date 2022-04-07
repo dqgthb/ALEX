@@ -76,6 +76,10 @@ int main(int argc, char* argv[]) {
     return 1;
   }
 
+  if (sorted == "true") {
+      std::sort(keys, keys + total_num_keys);
+  }
+
   // Combine bulk loaded keys with randomly generated payloads
   auto values = new std::pair<KEY_TYPE, PAYLOAD_TYPE>[init_num_keys];
   std::mt19937_64 gen_payload(std::random_device{}());
