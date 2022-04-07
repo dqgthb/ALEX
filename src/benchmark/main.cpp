@@ -108,6 +108,7 @@ int main(int argc, char* argv[]) {
   PAYLOAD_TYPE sum = 0;
   std::cout << std::scientific;
   std::cout << std::setprecision(3);
+  int num_actual_inserts = -1;
   while (true) {
     batch_no++;
 
@@ -117,20 +118,30 @@ int main(int argc, char* argv[]) {
       KEY_TYPE* lookup_keys = nullptr;
       if (lookup_distribution == "uniform") {
         lookup_keys = get_search_keys(keys, i, num_lookups_per_batch);
-      } else if (lookup_distribution == "zipf") {
-        lookup_keys = get_search_keys_zipf(keys, i, num_lookups_per_batch);
+      }
+      else if (lookup_distribution == "zipf") {
+          lookup_keys = get_search_keys_zipf(keys, i, num_lookups_per_batch);
+      }
+      else if (lookup_distribution == "just_inserted") {
+          if (num_actual_inserts != -1) {
+              lookup_keys = get_search_keys_just_inserted(keys, i, num_actual_inserts, num_lookups_per_batch);
+          }
+          else {
+              lookup_keys = get_search_keys_zipf(keys, i, num_lookups_per_batch);
+          }
       } else {
         std::cerr << "--lookup_distribution must be either 'uniform' or 'zipf'"
                   << std::endl;
         return 1;
       }
+
       auto lookups_start_time = std::chrono::high_resolution_clock::now();
       for (int j = 0; j < num_lookups_per_batch; j++) {
-        KEY_TYPE key = lookup_keys[j];
-        PAYLOAD_TYPE* payload = index.get_payload(key);
-        if (payload) {
-          sum += *payload;
-        }
+          KEY_TYPE key = lookup_keys[j];
+          PAYLOAD_TYPE* payload = index.get_payload(key);
+          if (payload) {
+              sum += *payload;
+          }
       }
       auto lookups_end_time = std::chrono::high_resolution_clock::now();
       batch_lookup_time = std::chrono::duration_cast<std::chrono::nanoseconds>(
@@ -142,7 +153,7 @@ int main(int argc, char* argv[]) {
     }
 
     // Do inserts
-    int num_actual_inserts =
+    num_actual_inserts =
         std::min(num_inserts_per_batch, total_num_keys - i);
     int num_keys_after_batch = i + num_actual_inserts;
     auto inserts_start_time = std::chrono::high_resolution_clock::now();
@@ -176,6 +187,8 @@ int main(int argc, char* argv[]) {
                 << cumulative_inserts / cumulative_insert_time * 1e9
                 << " inserts/sec,\t"
                 << cumulative_operations / cumulative_time * 1e9 << " ops/sec"
+          << '\n' << num_lookups_per_batch << " lookups "
+          << '\n' << num_actual_inserts << " inserts "
                 << std::endl;
     }
 
