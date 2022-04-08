@@ -56,8 +56,9 @@ int main(int, char **)
     }
     if (num_entries != 190)
     {
-        std::cout << "Error! There should be 190 entries in the index."
-                  << std::endl;
+        std::cout
+            << "Error! There should be 190 entries in the index."
+            << std::endl;
     }
 
     // Iterate through all entries with keys between 50 (inclusive) and 100
@@ -106,8 +107,9 @@ int main(int, char **)
     }
     if (num_duplicates != 10)
     {
-        std::cout << "Error! There should be 10 entries with key of value 42."
-                  << std::endl;
+        std::cout
+            << "Error! There should be 10 entries with key of value 42."
+            << std::endl;
     }
 
     // Check if a non-existent key exists
