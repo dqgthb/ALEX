@@ -1,0 +1,182 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm ll ordinary 200M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/longlat-200M.bin.data",
+        "--keys_file_type=binary",
+        "--init_num_keys=100000000",
+        "--total_num_keys=200000000",
+        "--batch_size=10000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/bm_ll_ordinary_200M.txt"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm ll ordinary 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/longlat-200M.bin.data",
+        "--keys_file_type=binary",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--sorted=false",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/bm_ll_ordinary_20M.txt"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm ll increasing 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/longlat-200m.bin.data",
+        "--keys_file_type=binary",
+        "--sorted=true",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--print_batch_stats",
+        "--lookup_distribution=uniform",
+        "> ${workspaceRoot}/results/bm_ll_increasing_20M.txt"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm ll increasing just_inserted 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/longlat-200m.bin.data",
+        "--keys_file_type=binary",
+        "--sorted=true",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=just_inserted",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/bm_ll_increasing_justInserted_20M.txt"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm ycsb ordinary 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/ycsb-200M.bin.data",
+        "--keys_file_type=binary",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "benchmark_longitudes 20M (double).exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/longitudes-200M.bin.data",
+        "--keys_file_type=binary",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "benchmark_lognormal-190M (long long int).exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/lognormal-190M.bin.data",
+        "--keys_file_type=binary",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm sample_keys 1000.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/sample_keys.bin",
+        "--keys_file_type=binary",
+        "--init_num_keys=500",
+        "--total_num_keys=1000",
+        "--batch_size=1000",
+        "--insert_frac=0.5",
+        "--print_batch_stats"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm concentrate 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrate20M.txt",
+        "--keys_file_type=text",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/bm_concentrate_20M.txt"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "bm sample 1000 text.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/sample_keys.txt",
+        "--keys_file_type=text",
+        "--init_num_keys=500",
+        "--total_num_keys=1000",
+        "--batch_size=1000",
+        "--insert_frac=0.5",
+        "--print_batch_stats"
+      ]
+    },
+
+  ]
+}
