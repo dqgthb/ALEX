@@ -7,6 +7,25 @@
       "type": "default",
       "project": "CMakeLists.txt",
       "projectTarget": "benchmark.exe",
+      "name": "bm ll concentrate 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentratedDoubles20M.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/bm_ll_concentrate_20M.txt"
+      ]
+    },
+
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
       "name": "bm ll ordinary 200M.exe",
       "args": [
         "--keys_file=${workspaceRoot}/resources/longlat-200M.bin.data",
@@ -133,7 +152,7 @@
       "type": "default",
       "project": "CMakeLists.txt",
       "projectTarget": "benchmark.exe",
-      "name": "bm sample_keys 1000.exe",
+      "name": "bm sample_keys 1000 binary.exe",
       "args": [
         "--keys_file=${workspaceRoot}/resources/sample_keys.bin",
         "--keys_file_type=binary",
@@ -141,24 +160,9 @@
         "--total_num_keys=1000",
         "--batch_size=1000",
         "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--sorted=false",
         "--print_batch_stats"
-      ]
-    },
-
-    {
-      "type": "default",
-      "project": "CMakeLists.txt",
-      "projectTarget": "benchmark.exe",
-      "name": "bm concentrate 20M.exe",
-      "args": [
-        "--keys_file=${workspaceRoot}/resources/concentrate20M.txt",
-        "--keys_file_type=text",
-        "--init_num_keys=10000000",
-        "--total_num_keys=20000000",
-        "--batch_size=1000000",
-        "--insert_frac=0.5",
-        "--print_batch_stats",
-        "> ${workspaceRoot}/results/bm_concentrate_20M.txt"
       ]
     },
 
@@ -176,7 +180,7 @@
         "--insert_frac=0.5",
         "--print_batch_stats"
       ]
-    },
+    }
 
   ]
 }
