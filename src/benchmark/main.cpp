@@ -78,6 +78,12 @@ int main(int argc, char* argv[]) {
     if (sorted == "true") {
         std::sort(keys, keys + total_num_keys);
     }
+    else if (sorted == "false") {
+    }
+    else {
+        std::cerr << "--sorted argument is wrong\n";
+        exit(1);
+    }
 
     // Combine bulk loaded keys with randomly generated payloads
     auto values = new std::pair<KEY_TYPE, PAYLOAD_TYPE>[init_num_keys];
@@ -121,6 +127,7 @@ int main(int argc, char* argv[]) {
             else if (lookup_distribution == "zipf") {
                 lookup_keys = get_search_keys_zipf(keys, i, num_lookups_per_batch);
             }
+
             else if (lookup_distribution == "just_inserted") {
                 if (num_actual_inserts != -1) {
                     lookup_keys = get_search_keys_just_inserted(keys, i, num_actual_inserts, num_lookups_per_batch);
@@ -129,6 +136,11 @@ int main(int argc, char* argv[]) {
                     lookup_keys = get_search_keys_zipf(keys, i, num_lookups_per_batch);
                 }
             }
+
+            else if (lookup_distribution == "just_inserted_with_noise") {
+                return 1;
+            }
+
             else {
                 std::cerr << "--lookup_distribution must be either 'uniform' or 'zipf'"
                     << std::endl;
