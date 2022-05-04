@@ -3,13 +3,14 @@
   "defaults": {},
   "configurations": [
 
+    // longitudes ordinary 20M
     {
       "type": "default",
       "project": "CMakeLists.txt",
       "projectTarget": "benchmark.exe",
-      "name": "bm ll concentrate 20M.exe",
+      "name": "longitudes-ordinary-20M.exe",
       "args": [
-        "--keys_file=${workspaceRoot}/resources/concentratedDoubles20M.bin",
+        "--keys_file=${workspaceRoot}/resources/longitudes-200M.bin.data",
         "--keys_file_type=binary",
         "--sorted=false",
         "--init_num_keys=10000000",
@@ -18,47 +19,175 @@
         "--insert_frac=0.5",
         "--lookup_distribution=uniform",
         "--print_batch_stats",
-        "> ${workspaceRoot}/results/bm_ll_concentrate_20M.txt"
+        "> ${workspaceRoot}/results/longitudes-ordinary-20M.txt"
       ]
     },
 
+    // ##### LONGITUDE CONCENTRATED
+    // longitude 25%
     {
       "type": "default",
       "project": "CMakeLists.txt",
       "projectTarget": "benchmark.exe",
-      "name": "bm ll ordinary 200M.exe",
+      "name": "longitudes25%.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrated/longitudes25%.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/concentrated/longitudes25%.txt"
+      ]
+    },
+
+    // longitudes 50%
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longitudes50%.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrated/longitudes50%.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/concentrated/longitudes50%.txt"
+      ]
+    },
+
+    // longitudes 75%
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longitudes75%.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrated/longitudes75%.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/concentrated/longitudes75%.txt"
+      ]
+    },
+
+
+    // ##### LONGLAT CONCENTRATED
+    // longlat 25%
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longlat25%.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrated/longlat25%.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/concentrated/longlat25%.txt"
+      ]
+    },
+
+    // longlat 50%
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longlat50%.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrated/longlat50%.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/concentrated/longlat50%.txt"
+      ]
+    },
+
+    // longlat 75%
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longlat75%.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/concentrated/longlat75%.bin",
+        "--keys_file_type=binary",
+        "--sorted=false",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/concentrated/longlat75%.txt"
+      ]
+    },
+
+    // longlat ordinary 20M
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longlat ordinary 20M.exe",
+      "args": [
+        "--keys_file=${workspaceRoot}/resources/longlat-200M.bin.data",
+        "--keys_file_type=binary",
+        "--init_num_keys=10000000",
+        "--total_num_keys=20000000",
+        "--batch_size=1000000",
+        "--insert_frac=0.5",
+        "--lookup_distribution=uniform",
+        "--sorted=false",
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/longlat-ordinary-20M.txt"
+      ]
+    },
+
+    // longlat ordinary 200
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "benchmark.exe",
+      "name": "longlat ordinary 200M.exe",
       "args": [
         "--keys_file=${workspaceRoot}/resources/longlat-200M.bin.data",
         "--keys_file_type=binary",
         "--init_num_keys=100000000",
+        "--sorted=false",
         "--total_num_keys=200000000",
         "--batch_size=10000000",
         "--insert_frac=0.5",
         "--lookup_distribution=uniform",
         "--print_batch_stats",
-        "> ${workspaceRoot}/results/bm_ll_ordinary_200M.txt"
+        "> ${workspaceRoot}/results/longlat-ordinary-200M.txt"
       ]
     },
 
-    {
-      "type": "default",
-      "project": "CMakeLists.txt",
-      "projectTarget": "benchmark.exe",
-      "name": "bm ll ordinary 20M.exe",
-      "args": [
-        "--keys_file=${workspaceRoot}/resources/longlat-200M.bin.data",
-        "--keys_file_type=binary",
-        "--init_num_keys=10000000",
-        "--total_num_keys=20000000",
-        "--batch_size=1000000",
-        "--insert_frac=0.5",
-        "--lookup_distribution=uniform",
-        "--sorted=false",
-        "--print_batch_stats",
-        "> ${workspaceRoot}/results/bm_ll_ordinary_20M.txt"
-      ]
-    },
 
+    // longlat increasing
     {
       "type": "default",
       "project": "CMakeLists.txt",
@@ -78,6 +207,7 @@
       ]
     },
 
+     // longlat increasing just_inserted
     {
       "type": "default",
       "project": "CMakeLists.txt",
@@ -114,22 +244,6 @@
       ]
     },
 
-    {
-      "type": "default",
-      "project": "CMakeLists.txt",
-      "projectTarget": "benchmark.exe",
-      "name": "benchmark_longitudes 20M (double).exe",
-      "args": [
-        "--keys_file=${workspaceRoot}/resources/longitudes-200M.bin.data",
-        "--keys_file_type=binary",
-        "--init_num_keys=10000000",
-        "--total_num_keys=20000000",
-        "--batch_size=1000000",
-        "--insert_frac=0.5",
-        "--lookup_distribution=uniform",
-        "--print_batch_stats"
-      ]
-    },
 
     {
       "type": "default",
