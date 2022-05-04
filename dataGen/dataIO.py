@@ -14,8 +14,10 @@ def readSigned8ByteInt(fileName, n):
 def writeSigned8ByteInt(fileName, nums):
     with open(fileName, "wb") as f:
         for num in nums:
-            binData = struct.pack("d", num)
+            binData = struct.pack("q", num)
             f.write(binData)
+
+
 
 
 def readUnsigned8ByteInt(fileName, n):
@@ -30,8 +32,10 @@ def readUnsigned8ByteInt(fileName, n):
 def writeUnsigned8ByteInt(fileName, nums):
     with open(fileName, "wb") as f:
         for num in nums:
-            binData = struct.pack("d", num)
+            binData = struct.pack("Q", num)
             f.write(binData)
+
+
 
 
 def readDoubles(fileName, n):
@@ -50,20 +54,28 @@ def writeDoubles(fileName, doubles):
             f.write(binData)
 
 
-def makeConcentratedDoubles(doubles):
-    doublesSorted = sorted(doubles)
+def makeConcentratedDoubles(nums, percentile = 0.5):
+    assert 0 <= percentile < 1
 
-    m = len(doublesSorted)//2
-    val = doublesSorted[m]
-    upperLimit = doublesSorted[m+1]
+    numsSorted = sorted(nums)
+
+    # m = len(numsSorted)//2
+    m = math.floor((len(numsSorted)-1) * percentile)
+    assert m+1 < len(numsSorted), "m+1 is not less than len"
+
+    val = numsSorted[m]
+    upperLimit = numsSorted[m+1]
+
     print(f"val = {val}, upperLimit = {upperLimit}")
 
-    for i in range(len(doubles)):
+    for i in range(len(nums)):
         val = math.nextafter(val, 1)
         assert val < upperLimit, "too close"
-        doubles.append(val)
+        nums.append(val)
 
-    return doubles
+    return nums
+
+
 
 
 DEBUG = True
