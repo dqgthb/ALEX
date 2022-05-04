@@ -1,5 +1,6 @@
 import struct
 import math
+import random
 
 
 ### def readSigned8ByteInt(fileName, n):
@@ -36,8 +37,6 @@ import math
 ###             f.write(binData)
 
 
-
-
 def readDoubles(fileName, n):
     doubles = []
     with open(fileName, "rb") as f:
@@ -71,14 +70,26 @@ def makeConcentratedDoubles(nums, *, percentile):
 
     print(f"val = {val}, upperLimit = {upperLimit}")
 
+    newNums = []
     for i in range(len(nums)):
         val = math.nextafter(val, 1)
         assert val < upperLimit, "too close"
-        nums.append(val)
+        newNums.append(val)
+    # random.shuffle(newNums)
+
+    nums.extend(newNums)
 
     return nums
 
 
+def makeIncreasingDoubles(nums):
+    max_ = max(nums)
+
+    val = max_
+    for i in range(len(nums)):
+        val = math.nextafter(val, 1)
+        nums.append(val)
+    return nums
 
 
 DEBUG = True

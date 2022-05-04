@@ -8,9 +8,19 @@ def makeConcentratedDoubles(iFileName, oFileName, *, iDataNum, percentile):
     if exists(oFileName):
         print(oFileName, "already exists.", file = sys.stderr)
         return
-    print(oFileName, "creating", oFileName)
+    print("Creating", oFileName)
     nums = dataIO.readDoubles(iFileName, iDataNum)
     nums = dataIO.makeConcentratedDoubles(nums, percentile=percentile)
+    dataIO.writeDoubles(oFileName, nums)
+
+
+def makeIncreasingDoubles(iFileName, oFileName, *, iDataNum):
+    if exists(oFileName):
+        print(oFileName, "already exists.", file = sys.stderr)
+        return
+    print("Creating", oFileName)
+    nums = dataIO.readDoubles(iFileName, iDataNum)
+    nums = dataIO.makeIncreasingDoubles(nums)
     dataIO.writeDoubles(oFileName, nums)
 
 
@@ -26,18 +36,23 @@ def makeConcentratedDoubles(iFileName, oFileName, *, iDataNum, percentile):
 
 def makeLonglat():
     iFileName = "../resources/longlat-200M.bin.data"
-    oFileName = "../resources/concentrated/longlat"
+    oFileName = "../resources/longlat/longlat"
     makeConcentratedDoubles(iFileName, oFileName + "25%.bin", iDataNum=10000000, percentile = 0.25)
     makeConcentratedDoubles(iFileName, oFileName + "50%.bin", iDataNum=10000000, percentile = 0.5000001)
     makeConcentratedDoubles(iFileName, oFileName + "75%.bin", iDataNum=10000000, percentile = 0.75)
 
+    makeIncreasingDoubles(iFileName, "../resources/longlat/longlatIncreasing.bin", iDataNum=10000000)
+
 
 def makeLongitudes():
     iFileName = "../resources/longitudes-200M.bin.data"
-    oFileName = "../resources/concentrated/longitudes"
+    oFileName = "../resources/longitudes/longitudes"
     makeConcentratedDoubles(iFileName, oFileName + "25%.bin", iDataNum=10000000, percentile = 0.25)
     makeConcentratedDoubles(iFileName, oFileName + "50%.bin", iDataNum=10000000, percentile = 0.50)
     makeConcentratedDoubles(iFileName, oFileName + "75%.bin", iDataNum=10000000, percentile = 0.75)
+
+    makeIncreasingDoubles(iFileName, "../resources/longitudes/longitudesIncreasing.bin", iDataNum=10000000)
+
 
 
 def main():
