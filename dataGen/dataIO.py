@@ -2,38 +2,38 @@ import struct
 import math
 
 
-def readSigned8ByteInt(fileName, n):
-    signedLL = []
-    with open(fileName, "rb") as f:
-        for _ in range(n):
-            x, = struct.unpack('q', f.read(8))
-            signedLL.append(x)
-    return signedLL
-
-
-def writeSigned8ByteInt(fileName, nums):
-    with open(fileName, "wb") as f:
-        for num in nums:
-            binData = struct.pack("q", num)
-            f.write(binData)
-
-
-
-
-def readUnsigned8ByteInt(fileName, n):
-    unsignedLL = []
-    with open(fileName, "rb") as f:
-        for _ in range(n):
-            x, = struct.unpack('Q', f.read(8))
-            unsignedLL.append(x)
-    return unsignedLL
-
-
-def writeUnsigned8ByteInt(fileName, nums):
-    with open(fileName, "wb") as f:
-        for num in nums:
-            binData = struct.pack("Q", num)
-            f.write(binData)
+### def readSigned8ByteInt(fileName, n):
+###     signedLL = []
+###     with open(fileName, "rb") as f:
+###         for _ in range(n):
+###             x, = struct.unpack('q', f.read(8))
+###             signedLL.append(x)
+###     return signedLL
+###
+###
+### def writeSigned8ByteInt(fileName, nums):
+###     with open(fileName, "wb") as f:
+###         for num in nums:
+###             binData = struct.pack("q", num)
+###             f.write(binData)
+###
+###
+###
+###
+### def readUnsigned8ByteInt(fileName, n):
+###     unsignedLL = []
+###     with open(fileName, "rb") as f:
+###         for _ in range(n):
+###             x, = struct.unpack('Q', f.read(8))
+###             unsignedLL.append(x)
+###     return unsignedLL
+###
+###
+### def writeUnsigned8ByteInt(fileName, nums):
+###     with open(fileName, "wb") as f:
+###         for num in nums:
+###             binData = struct.pack("Q", num)
+###             f.write(binData)
 
 
 
@@ -54,13 +54,16 @@ def writeDoubles(fileName, doubles):
             f.write(binData)
 
 
-def makeConcentratedDoubles(nums, percentile = 0.5):
+def makeConcentratedDoubles(nums, *, percentile):
     assert 0 <= percentile < 1
 
     numsSorted = sorted(nums)
 
     # m = len(numsSorted)//2
-    m = math.floor((len(numsSorted)-1) * percentile)
+    m = len(numsSorted) - 1
+    m = m * percentile
+    m = math.floor(m)
+    print("idx is", m)
     assert m+1 < len(numsSorted), "m+1 is not less than len"
 
     val = numsSorted[m]
