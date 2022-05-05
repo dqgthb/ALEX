@@ -276,7 +276,8 @@
         "--insert_frac=0.5",
         "--lookup_distribution=uniform",
         "--sorted=false",
-        "--print_batch_stats"
+        "--print_batch_stats",
+        "> ${workspaceRoot}/results/sample_keys.txt"
       ]
     },
 
