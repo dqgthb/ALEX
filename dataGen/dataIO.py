@@ -72,7 +72,7 @@ def makeConcentratedDoubles(nums, *, percentile):
 
     newNums = []
     for i in range(len(nums)):
-        val = math.nextafter(val, 1)
+        val = math.nextafter(val, math.inf)
         assert val < upperLimit, "too close"
         newNums.append(val)
     # random.shuffle(newNums)
@@ -82,41 +82,49 @@ def makeConcentratedDoubles(nums, *, percentile):
     return nums
 
 
-def makeIncreasingDoubles(nums):
+def makeIncreasingDenseDoubles(nums):
     max_ = max(nums)
 
     val = max_
     for i in range(len(nums)):
-        val = math.nextafter(val, 1)
+        val = math.nextafter(val, math.inf)
         nums.append(val)
     return nums
+
+
+def makeIncreasingNums(nums, *, step):
+    max_ = max(nums)
+    newNums = [max_ + i * step for i in range(1, len(nums)+1)]
+    assert len(nums) == len(newNums), "length is wrong"
+    nums.extend(newNums)
+    return nums
+
+
+def makeDecreasingDenseDoubles(nums):
+    min_ = min(nums)
+    val = min_
+    for i in range(len(nums)):
+        val = math.nextafter(val, -math.inf)
+        nums.append(val)
+    return nums
+
+
+def makeSortedDoubles(nums):
+    nums.sort()
+    return nums
+
 
 
 DEBUG = True
 
 
 def main():
-    doubles = readDoubles("../resources/longlat-200M.bin.data", 10000000)
-    #print(doubles)
-    doubles = makeConcentratedDoubles(doubles)
-    writeDoubles("concentratedDoubles.bin", doubles)
 
-    if DEBUG:
-        print("Debugging...")
-        doubles2 = readDoubles("concentratedDoubles.bin", 20000000)
-        assert doubles == doubles2, "two doubles different"
-
-    print("Data created!")
-
-
-def test():
-    print("Testing...")
-    doubles = readDoubles("./concentratedDoubles.bin", 20000000)
-    for i in (doubles[19999990:]):
-        print("{:.15f}".format(i))
-
+    # nums = readDoubles("../resources/longitudes-200M.bin.data", 10000000)
+    nums = readDoubles("../resources/longlat-200M.bin.data", 10000000)
+    print(nums[:100])
+    print(min(nums), max(nums))
 
 
 if __name__ == "__main__":
     main()
-    # test()
