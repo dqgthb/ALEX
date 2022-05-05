@@ -9,29 +9,39 @@ def main():
     sns.set_theme(style="whitegrid", palette="deep")
 
     resourceDir = "../resources/"
-    nums = dataIO.readDoubles(resourceDir + "longitudes-200M.bin.data", 20000000)
-    sns.displot(nums, kind="ecdf")
-    plt.savefig("longitudes-ordinary.png")
+    dataNames = ["longitudes", "longlat"]
+    for dataName in dataNames:
+        print("for " + dataName)
 
-    nums = dataIO.readDoubles(resourceDir + "longitudes/longitudes25%.bin", 20000000)
-    sns.displot(nums, kind="ecdf")
-    plt.savefig("longitudes25%.png")
+        print("creating ordinary")
+        nums = dataIO.readDoubles(resourceDir + dataName + "-200M.bin.data", 20000000)
+        sns.displot(nums, kind="ecdf")
+        plt.savefig(dataName + "-ordinary.png")
 
-    nums = dataIO.readDoubles(resourceDir + "longitudes/longitudes50%.bin", 20000000)
-    sns.displot(nums, kind="ecdf")
-    plt.savefig("longitudes50%.png")
+        print("creating 25")
+        nums = dataIO.readDoubles(resourceDir + dataName + "/" + dataName + "25%.bin", 20000000)
+        sns.displot(nums, kind="ecdf")
+        plt.savefig(dataName + "25%.png")
 
-    nums = dataIO.readDoubles(resourceDir + "longitudes/longitudes75%.bin", 20000000)
-    sns.displot(nums, kind="ecdf")
-    plt.savefig("longitudes75%.png")
+        print("creating 50")
+        nums = dataIO.readDoubles(resourceDir + dataName + "/" + dataName + "50%.bin", 20000000)
+        sns.displot(nums, kind="ecdf")
+        plt.savefig(dataName + "50%.png")
 
-    nums = dataIO.readDoubles(resourceDir + "longitudes/longitudesIncreasing.bin", 20000000)
-    sns.displot(nums, kind="ecdf")
-    plt.savefig("longitudesIncreasing.png")
+        print("creating 75")
+        nums = dataIO.readDoubles(resourceDir + dataName + "/" + dataName + "75%.bin", 20000000)
+        sns.displot(nums, kind="ecdf")
+        plt.savefig(dataName + "75%.png")
 
+        print("creating increasing")
+        nums = dataIO.readDoubles(resourceDir + dataName + "/" + dataName + "Increasing.bin", 20000000)
+        sns.displot(nums, kind="ecdf")
+        plt.savefig(dataName + "Increasing.png")
 
-if __name__ == "__main__":
-    main()
+        print("creating increasingBy1")
+        nums = dataIO.readDoubles(resourceDir + dataName + "/increaseBy1.bin", 20000000)
+        sns.displot(nums, kind="ecdf")
+        plt.savefig(dataName + "IncreaseBy1.png")
 
 
 if __name__ == "__main__":
