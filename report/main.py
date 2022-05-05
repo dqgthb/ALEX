@@ -2,7 +2,7 @@ import os
 import sys
 
 of = open("result.txt", 'w')
-#sys.stdout = of
+sys.stdout = of
 
 def reportFile(fileName, lineNum):
     with open(fileName, encoding='utf-8') as f:
@@ -22,10 +22,24 @@ def reportDirectory(dirName):
             reportFile(dirName+obj, 1)
 
 
-def main():
 
-    reportDirectory("../results/longitudes/")
-    reportDirectory("../results/longlat/")
+def main():
+    cmd = input().strip()
+
+    if cmd == "all":
+        for i in range(40, 62, 2):
+            print("TESTCASE" + str(i))
+            reportDirectory("../results/" + str(i) + "/longitudes/")
+            reportDirectory("../results/" + str(i) + "/longlat/")
+            print()
+
+    else:
+        num = int(cmd)
+        assert 40 <= num <= 60, "Not in range!"
+        reportDirectory("../results/" + str(num) + "/longitudes/")
+        reportDirectory("../results/" + str(num) + "/longlat/")
+
+
 
 
 
