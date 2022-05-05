@@ -13,10 +13,10 @@ write-output $exePath
 write-output "LONGITUDES #####################################################"
 ###############################################################################
 
-
 # Ordinary longitudes
 $file = "results/$num/longitudes/longitudes-ordinary-20M.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longitudes-200M.bin.data `
         --keys_file_type=binary `
@@ -28,14 +28,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longitude 25%
 $file = "results/$num/longitudes/longitudes25%.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longitudes/longitudes25%.bin `
         --keys_file_type=binary `
@@ -47,13 +48,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
 
+# longitudes 50%
 $file = "results/$num/longitudes/longitudes50%.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
-    # longitude 50%
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longitudes/longitudes50%.bin `
         --keys_file_type=binary `
@@ -65,16 +68,16 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
 
-
-# longitude 75%
+# longitudes 75%
 $file = "results/$num/longitudes/longitudes75%.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
-    .\out\build\x64-Debug\benchmark.exe `
         --keys_file=resources/longitudes/longitudes75%.bin `
         --keys_file_type=binary `
         --sorted=false `
@@ -85,14 +88,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longitudes increasing%
 $file = "results/$num/longitudes/longitudesIncreasing.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longitudes/longitudesIncreasing.bin `
         --keys_file_type=binary `
@@ -104,16 +108,16 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longitudes decreasing
 $file = "results/$num/longitudes/longitudesDecreasing.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
-    .\out\build\x64-Debug\benchmark.exe `
         --keys_file=resources/longitudes/longitudesDecreasing.bin `
         --keys_file_type=binary `
         --sorted=false `
@@ -124,13 +128,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
 
 # longitudes sorted
 $file = "results/$num/longitudes/sorted.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longitudes/sorted.bin `
         --keys_file_type=binary `
@@ -142,7 +148,28 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
+    write-output "$file already exists."
+}
+
+# longitudes increase by 1
+$file = "results/$num/longitudes/increaseBy1.txt"
+if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
+    & $exePath `
+        --keys_file=resources/longitudes/sorted.bin `
+        --keys_file_type=binary `
+        --sorted=false `
+        --init_num_keys=10000000 `
+        --total_num_keys=20000000 `
+        --batch_size=1000000 `
+        --insert_frac=0.5 `
+        --lookup_distribution=uniform `
+        --print_batch_stats `
+        > $file
+}
+else {
     write-output "$file already exists."
 }
 
@@ -156,6 +183,7 @@ write-output "LONGLAT#########################################################"
 # Ordinary longlat
 $file = "results/$num/longlat/longlat-ordinary-20M.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longlat-200M.bin.data `
         --keys_file_type=binary `
@@ -167,14 +195,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longlat 25%
 $file = "results/$num/longlat/longlat25%.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longlat/longlat25%.bin `
         --keys_file_type=binary `
@@ -186,13 +215,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
 
 # longlat 50%
 $file = "results/$num/longlat/longlat50%.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longlat/longlat50%.bin `
         --keys_file_type=binary `
@@ -204,14 +235,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longlat 75%
 $file = "results/$num/longlat/longlat75%.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longlat/longlat75%.bin `
         --keys_file_type=binary `
@@ -223,14 +255,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longlat increasing%
 $file = "results/$num/longlat/longlatIncreasing.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longlat/longlatIncreasing.bin `
         --keys_file_type=binary `
@@ -242,16 +275,16 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
-
 
 # longlat decreasing
 $file = "results/$num/longlat/longlatDecreasing.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
-    .\out\build\x64-Debug\benchmark.exe `
         --keys_file=resources/longlat/longlatDecreasing.bin `
         --keys_file_type=binary `
         --sorted=false `
@@ -262,13 +295,15 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
 
 # longlat sorted
 $file = "results/$num/longlat/sorted.txt"
 if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
     & $exePath `
         --keys_file=resources/longlat/sorted.bin `
         --keys_file_type=binary `
@@ -280,9 +315,31 @@ if ( -not (test-path -path $file -pathtype leaf)) {
         --lookup_distribution=uniform `
         --print_batch_stats `
         > $file
-} else {
+}
+else {
     write-output "$file already exists."
 }
+
+# longlat increase by 1
+$file = "results/$num/longlat/increaseBy1.txt"
+if ( -not (test-path -path $file -pathtype leaf)) {
+    write-output "writing $file ..."
+    & $exePath `
+        --keys_file=resources/longlat/sorted.bin `
+        --keys_file_type=binary `
+        --sorted=false `
+        --init_num_keys=10000000 `
+        --total_num_keys=20000000 `
+        --batch_size=1000000 `
+        --insert_frac=0.5 `
+        --lookup_distribution=uniform `
+        --print_batch_stats `
+        > $file
+}
+else {
+    write-output "$file already exists."
+}
+
 
 
 ###############################################################################
