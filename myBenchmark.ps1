@@ -7,10 +7,14 @@
 write-output "LONGITUDES #####################################################"
 ###############################################################################
 
+# $exePath = ".\out\build\x64-Debug\benchmark.exe"
+$exePath = ".\benchmark50.exe"
+
+
 # Ordinary longitudes
 $file = 'results/longitudes/longitudes-ordinary-20M.txt'
 if ( -not (test-path -path $file -pathtype leaf)) {
-    .\out\build\x64-Debug\benchmark.exe `
+    & $exePath `
         --keys_file=resources/longitudes-200M.bin.data `
         --keys_file_type=binary `
         --sorted=false `
