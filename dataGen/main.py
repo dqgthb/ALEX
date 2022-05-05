@@ -74,9 +74,10 @@ def makeLongitudes():
     makeConcentratedDoubles(iFileName, oFileName + "50%.bin", iDataNum=10000000, percentile = 0.50)
     makeConcentratedDoubles(iFileName, oFileName + "75%.bin", iDataNum=10000000, percentile = 0.75)
     makeIncreasingDenseDoubles(iFileName, "../resources/longitudes/longitudesIncreasing.bin", iDataNum=10000000)
-    #makeIncreasingNums(iFileName, "../resources/longitudes/increaseBy1.bin", iDataNum=10000000, step=1)
+    makeIncreasingNums(iFileName, "../resources/longitudes/increaseBy1.bin", iDataNum=10000000, step=1)
     makeDecreasingDenseDoubles(iFileName, "../resources/longitudes/longitudesDecreasing.bin", iDataNum=10000000)
     makeSortedDoubles(iFileName, "../resources/longitudes/sorted.bin", iDataNum=20000000)
+
 
 
 def makeLonglat():
@@ -86,7 +87,7 @@ def makeLonglat():
     makeConcentratedDoubles(iFileName, oFileName + "50%.bin", iDataNum=10000000, percentile = 0.5000001)
     makeConcentratedDoubles(iFileName, oFileName + "75%.bin", iDataNum=10000000, percentile = 0.75)
     makeIncreasingDenseDoubles(iFileName, "../resources/longlat/longlatIncreasing.bin", iDataNum=10000000)
-    #makeIncreasingNums(iFileName, "../resources/longlat/increaseBy1.bin", iDataNum=10000000, step=1)
+    makeIncreasingNums(iFileName, "../resources/longlat/increaseBy1.bin", iDataNum=10000000, step=1)
     makeDecreasingDenseDoubles(iFileName, "../resources/longlat/longlatDecreasing.bin", iDataNum=10000000)
     makeSortedDoubles(iFileName, "../resources/longlat/sorted.bin", iDataNum=20000000)
 
