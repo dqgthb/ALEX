@@ -71,7 +71,7 @@
       "projectTarget": "benchmark.exe",
       "name": "longitudes75%.exe",
       "args": [
-        "--keys_file=${workspaceRoot}/resources/concentrated/longitudes75%.bin",
+        "--keys_file=${workspaceRoot}/resources/longitudes/longitudes75%.bin",
         "--keys_file_type=binary",
         "--sorted=false",
         "--init_num_keys=10000000",
@@ -80,7 +80,7 @@
         "--insert_frac=0.5",
         "--lookup_distribution=uniform",
         "--print_batch_stats",
-        "> ${workspaceRoot}/results/concentrated/longitudes75%.txt"
+        "> ${workspaceRoot}/results/longitudes75%.txt"
       ]
     },
 
