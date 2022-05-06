@@ -4,7 +4,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import dataIO
 
-def main():
+
+def makeAllGraphs():
     #sns.set_theme()
     sns.set_theme(style="whitegrid", palette="deep")
 
@@ -42,6 +43,11 @@ def main():
         nums = dataIO.readDoubles(resourceDir + dataName + "/increaseBy1.bin", 20000000)
         sns.displot(nums, kind="ecdf")
         plt.savefig(dataName + "IncreaseBy1.png")
+
+
+def main():
+    pass
+
 
 
 if __name__ == "__main__":
