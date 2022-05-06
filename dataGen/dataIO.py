@@ -1,6 +1,7 @@
 import struct
 import math
 import random
+#random.seed(1)
 
 
 ### def readSigned8ByteInt(fileName, n):
@@ -75,7 +76,7 @@ def makeConcentratedDoubles(nums, *, percentile):
         val = math.nextafter(val, math.inf)
         assert val < upperLimit, "too close"
         newNums.append(val)
-    # random.shuffle(newNums)
+    #random.shuffle(newNums)
 
     nums.extend(newNums)
 
