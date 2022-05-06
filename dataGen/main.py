@@ -79,7 +79,6 @@ def makeLongitudes():
     makeSortedDoubles(iFileName, "../resources/longitudes/sorted.bin", iDataNum=20000000)
 
 
-
 def makeLonglat():
     iFileName = "../resources/longlat-200M.bin.data"
     oFileName = "../resources/longlat/longlat"
@@ -90,7 +89,6 @@ def makeLonglat():
     makeIncreasingNums(iFileName, "../resources/longlat/increaseBy1.bin", iDataNum=10000000, step=1)
     makeDecreasingDenseDoubles(iFileName, "../resources/longlat/longlatDecreasing.bin", iDataNum=10000000)
     makeSortedDoubles(iFileName, "../resources/longlat/sorted.bin", iDataNum=20000000)
-
 
 
 def main():
