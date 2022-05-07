@@ -45,8 +45,37 @@ def makeAllGraphs():
         plt.savefig(dataName + "IncreaseBy1.png")
 
 
+def makeUniformVsConcentratedComparison(dataName):
+
+    df =pd.read_csv(dataName + ".csv")
+    print(df)
+
+    sns.barplot(
+        data=df,
+        x="Insert Distribution",
+        y="Inserts Per Second",
+    )
+    plt.title(dataName)
+    plt.savefig(dataName + "Comparison.png")
+
+
+def makeCDF(dataName):
+
+    print("creating ordinary")
+    nums = dataIO.readDoubles(resourceDir + dataName + "-200M.bin.data", 20000000)
+    sns.displot(nums, kind="ecdf")
+    plt.title(dataName)
+    plt.savefig(dataName + "-ordinary.png")
+
+
+
 def main():
-    pass
+    global resourceDir
+    resourceDir = "../resources/"
+    makeUniformVsConcentratedComparison("longitudes")
+    makeUniformVsConcentratedComparison("longlat")
+    makeCDF("longitudes")
+    makeCDF("longlat")
 
 
 

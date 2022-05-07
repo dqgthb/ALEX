@@ -48,15 +48,35 @@ def calculateAverageOf3Quantiles(dirName, dataName):
         print(' + '.join(str(i) for i in numInserts), "=", sum(numInserts))
         print("Average of 25, 50, 75% quantile inserts are:", mean(numInserts), "inserts per second.")
         #print(dirName, ":", mean(numInserts), file=sys.stderr)
+        print()
 
         QuantileData[dataName][dirName] = mean(numInserts)
 
 
-def main():
-    print("all? Number (40 <= x <= 60)?", file=sys.stderr)
-    cmd = input().strip()
+def minMax(dataName):
+    maxStr = [str(i) for i in range(65, 85, 5)]
+    minStr = [str(i) for  i in range(60, 80, 5)]
+
+    for i in range(len(minStr)):
+        for j in range(i, len(maxStr)):
+            print(i, j, minStr[i], maxStr[j])
+
+
+            dirName = "../results/min" + minStr[i] + "max" + maxStr[j] + "/" + dataName + "/"
+            reportDirectory(dirName, dataName)
+
+
+
+def main(argv):
+    cmd = argv[1]
 
     if cmd == "all":
+        print("")
+        minMax("longitudes")
+        minMax("longlat")
+
+    elif cmd == "oldAll":
+
         for i in range(40, 62, 2):
             print("TESTCASE" + str(i))
             reportDirectory("../results/" + str(i) + "/longitudes/", "longitudes")
@@ -71,6 +91,9 @@ def main():
             "min50max70",
             "min45max65",
         ]
+
+
+
 
         for name in names:
             print("TESTCASE" + name)
@@ -101,4 +124,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)

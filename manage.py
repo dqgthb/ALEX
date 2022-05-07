@@ -1,5 +1,7 @@
 import os, sys
 import shutil
+maxStr = [str(i) for i in range(65, 85, 5)]
+minStr = [str(i) for  i in range(60, 80, 5)]
 
 
 def cleanDir():
@@ -11,7 +13,30 @@ def cleanDir():
     shutil.rmtree("./"+str(n)+"/longlat")
     os.mkdir("./"+str(n)+"/longlat")
 
+
 def createDirs():
+
+    global maxStr, minStr
+
+    for i in range(len(minStr)):
+        for j in range(i, len(maxStr)):
+            dirName = "../results/min" + minStr[i] + "max" + maxStr[j] + "/longitudes/"
+            if not os.path.exists(dirName):
+                print("create", dirName)
+                os.makedirs(dirName)
+            else:
+                print(dirName, "already exists")
+
+            dirName = "../results/min" + minStr[i] + "max" + maxStr[j] + "/longlat/"
+            if not os.path.exists(dirName):
+                print("create", dirName)
+                os.makedirs(dirName)
+            else:
+                print(dirName, "already exists")
+
+
+
+def OldCreateDirs():
     try:
         for i in range(40, 62, 2):
             os.mkdir(str(i))
@@ -49,9 +74,10 @@ def resetDirs():
     createDirs()
 
 
-def main():
+def main(argv):
+
     os.chdir("./results")
-    cmd = input().strip()
+    cmd = argv[1]
     if cmd == "create":
         createDirs()
     elif cmd == "clean":
@@ -66,4 +92,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
