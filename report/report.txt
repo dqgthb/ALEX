@@ -27,9 +27,6 @@ found flag print_batch_stats
 >>> ../results/min60max65/longitudes/sorted.txt
 found flag print_batch_stats
 
-985600.0 + 988800.0 + 1080000.0 = 3054400.0
-Average of 25, 50, 75% quantile inserts are: 1018133.3333333334 inserts per second.
-
 0 1 60 70
 ################################################
 directory: ../results/min60max70/longitudes/
@@ -57,9 +54,6 @@ found flag print_batch_stats
 
 >>> ../results/min60max70/longitudes/sorted.txt
 found flag print_batch_stats
-
-875300.0 + 882200.0 + 826700.0 = 2584200.0
-Average of 25, 50, 75% quantile inserts are: 861400.0 inserts per second.
 
 0 2 60 75
 ################################################
@@ -89,9 +83,6 @@ found flag print_batch_stats
 >>> ../results/min60max75/longitudes/sorted.txt
 found flag print_batch_stats
 
-774900.0 + 511000.0 + 538200.0 = 1824100.0
-Average of 25, 50, 75% quantile inserts are: 608033.3333333334 inserts per second.
-
 0 3 60 80
 ################################################
 directory: ../results/min60max80/longitudes/
@@ -120,9 +111,6 @@ found flag print_batch_stats
 >>> ../results/min60max80/longitudes/sorted.txt
 found flag print_batch_stats
 
-827100.0 + 495000.0 + 397500.0 = 1719600.0
-Average of 25, 50, 75% quantile inserts are: 573200.0 inserts per second.
-
 1 1 65 70
 ################################################
 directory: ../results/min65max70/longitudes/
@@ -134,13 +122,7 @@ found flag print_batch_stats
 	cumulative throughput:	3.480e+06 lookups/sec,	6.033e+03 inserts/sec,	1.205e+04 ops/sec
 
 >>> ../results/min65max70/longitudes/longitudes25%.txt
-	cumulative throughput:	3.515e+06 lookups/sec,	1.529e+02 inserts/sec,	3.058e+02 ops/sec
-
->>> ../results/min65max70/longitudes/longitudes50%.txt
 500000 inserts 
-
->>> ../results/min65max70/longitudes/longitudes75%.txt
-found flag print_batch_stats
 
 >>> ../results/min65max70/longitudes/longitudesDecreasing.txt
 found flag print_batch_stats
@@ -179,9 +161,6 @@ found flag print_batch_stats
 >>> ../results/min65max75/longitudes/sorted.txt
 found flag print_batch_stats
 
-1113000.0 + 1085000.0 + 1000000.0 = 3198000.0
-Average of 25, 50, 75% quantile inserts are: 1066000.0 inserts per second.
-
 1 3 65 80
 ################################################
 directory: ../results/min65max80/longitudes/
@@ -209,9 +188,6 @@ found flag print_batch_stats
 
 >>> ../results/min65max80/longitudes/sorted.txt
 found flag print_batch_stats
-
-970700.0 + 807500.0 + 744700.0 = 2522900.0
-Average of 25, 50, 75% quantile inserts are: 840966.6666666666 inserts per second.
 
 2 2 70 75
 ################################################
@@ -241,9 +217,6 @@ found flag print_batch_stats
 >>> ../results/min70max75/longitudes/sorted.txt
 found flag print_batch_stats
 
-1223000.0 + 1216000.0 + 1342000.0 = 3781000.0
-Average of 25, 50, 75% quantile inserts are: 1260333.3333333333 inserts per second.
-
 2 3 70 80
 ################################################
 directory: ../results/min70max80/longitudes/
@@ -272,13 +245,34 @@ found flag print_batch_stats
 >>> ../results/min70max80/longitudes/sorted.txt
 found flag print_batch_stats
 
-1335000.0 + 1312000.0 + 1593000.0 = 4240000.0
-Average of 25, 50, 75% quantile inserts are: 1413333.3333333333 inserts per second.
-
 3 3 75 80
 ################################################
 directory: ../results/min75max80/longitudes/
 ################################################
+>>> ../results/min75max80/longitudes/increaseBy1.txt
+found flag print_batch_stats
+
+>>> ../results/min75max80/longitudes/longitudes-ordinary-20M.txt
+	cumulative throughput:	3.485e+06 lookups/sec,	1.077e+06 inserts/sec,	1.645e+06 ops/sec
+
+>>> ../results/min75max80/longitudes/longitudes25%.txt
+	cumulative throughput:	3.109e+06 lookups/sec,	1.219e+06 inserts/sec,	1.751e+06 ops/sec
+
+>>> ../results/min75max80/longitudes/longitudes50%.txt
+	cumulative throughput:	3.296e+06 lookups/sec,	1.223e+06 inserts/sec,	1.784e+06 ops/sec
+
+>>> ../results/min75max80/longitudes/longitudes75%.txt
+	cumulative throughput:	3.414e+06 lookups/sec,	1.339e+06 inserts/sec,	1.924e+06 ops/sec
+
+>>> ../results/min75max80/longitudes/longitudesDecreasing.txt
+found flag print_batch_stats
+
+>>> ../results/min75max80/longitudes/longitudesIncreasing.txt
+found flag print_batch_stats
+
+>>> ../results/min75max80/longitudes/sorted.txt
+found flag print_batch_stats
+
 0 0 60 65
 ################################################
 directory: ../results/min60max65/longlat/
@@ -306,9 +300,6 @@ found flag print_batch_stats
 
 >>> ../results/min60max65/longlat/sorted.txt
 found flag print_batch_stats
-
-1017000.0 + 1019000.0 + 999200.0 = 3035200.0
-Average of 25, 50, 75% quantile inserts are: 1011733.3333333334 inserts per second.
 
 0 1 60 70
 ################################################
@@ -338,9 +329,6 @@ found flag print_batch_stats
 >>> ../results/min60max70/longlat/sorted.txt
 found flag print_batch_stats
 
-1095000.0 + 1141000.0 + 846100.0 = 3082100.0
-Average of 25, 50, 75% quantile inserts are: 1027366.6666666666 inserts per second.
-
 0 2 60 75
 ################################################
 directory: ../results/min60max75/longlat/
@@ -368,9 +356,6 @@ found flag print_batch_stats
 
 >>> ../results/min60max75/longlat/sorted.txt
 found flag print_batch_stats
-
-1072000.0 + 1022000.0 + 823200.0 = 2917200.0
-Average of 25, 50, 75% quantile inserts are: 972400.0 inserts per second.
 
 0 3 60 80
 ################################################
@@ -400,9 +385,6 @@ found flag print_batch_stats
 >>> ../results/min60max80/longlat/sorted.txt
 found flag print_batch_stats
 
-1236000.0 + 1183000.0 + 725200.0 = 3144200.0
-Average of 25, 50, 75% quantile inserts are: 1048066.6666666666 inserts per second.
-
 1 1 65 70
 ################################################
 directory: ../results/min65max70/longlat/
@@ -430,9 +412,6 @@ found flag print_batch_stats
 
 >>> ../results/min65max70/longlat/sorted.txt
 found flag print_batch_stats
-
-142.2 + 156.4 + 186.4 = 485.0
-Average of 25, 50, 75% quantile inserts are: 161.66666666666666 inserts per second.
 
 1 2 65 75
 ################################################
@@ -462,9 +441,6 @@ found flag print_batch_stats
 >>> ../results/min65max75/longlat/sorted.txt
 found flag print_batch_stats
 
-1391000.0 + 1362000.0 + 542200.0 = 3295200.0
-Average of 25, 50, 75% quantile inserts are: 1098400.0 inserts per second.
-
 1 3 65 80
 ################################################
 directory: ../results/min65max80/longlat/
@@ -492,9 +468,6 @@ found flag print_batch_stats
 
 >>> ../results/min65max80/longlat/sorted.txt
 found flag print_batch_stats
-
-1320000.0 + 1322000.0 + 432800.0 = 3074800.0
-Average of 25, 50, 75% quantile inserts are: 1024933.3333333334 inserts per second.
 
 2 2 70 75
 ################################################
@@ -524,13 +497,13 @@ found flag print_batch_stats
 >>> ../results/min70max75/longlat/sorted.txt
 found flag print_batch_stats
 
-1274000.0 + 1278000.0 + 755900.0 = 3307900.0
-Average of 25, 50, 75% quantile inserts are: 1102633.3333333333 inserts per second.
-
 2 3 70 80
 ################################################
 directory: ../results/min70max80/longlat/
 ################################################
+>>> ../results/min70max80/longlat/increaseBy1.txt
+found flag print_batch_stats
+
 >>> ../results/min70max80/longlat/longlat-ordinary-20M.txt
 	cumulative throughput:	2.912e+06 lookups/sec,	1.103e+06 inserts/sec,	1.600e+06 ops/sec
 
@@ -538,31 +511,79 @@ directory: ../results/min70max80/longlat/
 	cumulative throughput:	2.878e+06 lookups/sec,	1.397e+06 inserts/sec,	1.881e+06 ops/sec
 
 >>> ../results/min70max80/longlat/longlat50%.txt
-500000 inserts 
+	cumulative throughput:	2.966e+06 lookups/sec,	1.431e+06 inserts/sec,	1.931e+06 ops/sec
+
+>>> ../results/min70max80/longlat/longlat75%.txt
+	cumulative throughput:	1.980e+06 lookups/sec,	9.870e+05 inserts/sec,	1.317e+06 ops/sec
+
+>>> ../results/min70max80/longlat/longlatDecreasing.txt
+found flag print_batch_stats
+
+>>> ../results/min70max80/longlat/longlatIncreasing.txt
+found flag print_batch_stats
+
+>>> ../results/min70max80/longlat/sorted.txt
+found flag print_batch_stats
 
 3 3 75 80
 ################################################
 directory: ../results/min75max80/longlat/
 ################################################
-#####
-longitudes 25, 50, 75% quantile concentrated average result:
-../results/min60max65/longitudes/ 1018133.3333333334
-../results/min60max70/longitudes/ 861400.0
-../results/min60max75/longitudes/ 608033.3333333334
-../results/min60max80/longitudes/ 573200.0
-../results/min65max75/longitudes/ 1066000.0
-../results/min65max80/longitudes/ 840966.6666666666
-../results/min70max75/longitudes/ 1260333.3333333333
-../results/min70max80/longitudes/ 1413333.3333333333
+>>> ../results/min75max80/longlat/increaseBy1.txt
+found flag print_batch_stats
 
-#####
-longlat 25, 50, 75% quantile concentrated average result:
-../results/min60max65/longlat/ 1011733.3333333334
-../results/min60max70/longlat/ 1027366.6666666666
-../results/min60max75/longlat/ 972400.0
-../results/min60max80/longlat/ 1048066.6666666666
-../results/min65max70/longlat/ 161.66666666666666
-../results/min65max75/longlat/ 1098400.0
-../results/min65max80/longlat/ 1024933.3333333334
-../results/min70max75/longlat/ 1102633.3333333333
+>>> ../results/min75max80/longlat/longlat-ordinary-20M.txt
+	cumulative throughput:	2.927e+06 lookups/sec,	8.419e+05 inserts/sec,	1.308e+06 ops/sec
 
+>>> ../results/min75max80/longlat/longlat25%.txt
+	cumulative throughput:	3.099e+06 lookups/sec,	1.277e+06 inserts/sec,	1.808e+06 ops/sec
+
+>>> ../results/min75max80/longlat/longlat50%.txt
+	cumulative throughput:	3.177e+06 lookups/sec,	1.298e+06 inserts/sec,	1.843e+06 ops/sec
+
+>>> ../results/min75max80/longlat/longlat75%.txt
+	cumulative throughput:	2.824e+06 lookups/sec,	1.178e+06 inserts/sec,	1.663e+06 ops/sec
+
+>>> ../results/min75max80/longlat/longlatDecreasing.txt
+found flag print_batch_stats
+
+>>> ../results/min75max80/longlat/longlatIncreasing.txt
+found flag print_batch_stats
+
+>>> ../results/min75max80/longlat/sorted.txt
+found flag print_batch_stats
+
+
+###############################
+longitudes #####################
+###############################
+
+ordinary ###############################
+		 65		70		75		80
+60		1123000.0	1331000.0	1660000.0	1810000.0	
+65				6033.0	1460000.0	1714000.0	
+70						1113000.0	1440000.0	
+75								1077000.0	
+quantile ###############################
+		 65				70				75				80
+60		1018133.3333333334		861400.0		608033.3333333334		573200.0		
+65						NO VALUE AVAIL		1066000.0		840966.6666666666		
+70										1260333.3333333333		1413333.3333333333		
+75														1260333.3333333333		
+
+###############################
+longlat #####################
+###############################
+
+ordinary ###############################
+		 65		70		75		80
+60		951200.0	1144000.0	1294000.0	1383000.0	
+65				DATA NOT	1186000.0	1339000.0	
+70						935600.0	1103000.0	
+75								841900.0	
+quantile ###############################
+		 65				70				75				80
+60		1011733.3333333334		1027366.6666666666		972400.0		1048066.6666666666		
+65						161.66666666666666		1098400.0		1024933.3333333334		
+70										1102633.3333333333		1271666.6666666667		
+75														1251000.0		
