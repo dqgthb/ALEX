@@ -9,61 +9,61 @@ from numpy import average
 #of = open("result.txt", 'w')
 #sys.stdout = of
 
-QuantileData = defaultdict(dict)
+maxStr = [str(i) for i in range(65, 85, 5)]
+minStr = [str(i) for  i in range(60, 80, 5)]
 
-def reportFile(fileName, lineNum):
+def ddict():
+    return defaultdict(ddict)
+
+
+QuantileData = defaultdict(ddict)
+KeyData = defaultdict(ddict)
+
+
+def reportFile(min_, max_, fileName, dataName, lineNum):
     with open(fileName, encoding='utf-8') as f:
         lines = f.readlines()
         print(">>>", fileName)
         print(''.join(lines[-lineNum:]))
 
+    parseAndCollectKeyData(min_, max_, fileName, dataName, lines)
 
-def reportDirectory(dirName, dataName):
+
+def reportDirectory(min_, max_, dirName, dataName):
     print("################################################")
     print("directory:", dirName)
     print("################################################")
     assert(dirName[-1] == '/')
 
     for obj in os.listdir(dirName):
-        if os.path.isfile(dirName+obj):
-            reportFile(dirName+obj, 1)
-    try:
-        calculateAverageOf3Quantiles(dirName, dataName)
-    except:
-        pass
+        fileName = dirName + obj
+        if os.path.isfile(fileName):
+            reportFile(min_, max_, fileName, dataName, 1)
 
 
-def calculateAverageOf3Quantiles(dirName, dataName):
-    fn25 = dirName + dataName + "25%.txt"
-    fn50 = dirName + dataName + "50%.txt"
-    fn75 = dirName + dataName + "75%.txt"
-    filenames = [fn25, fn50, fn75]
 
-    with ExitStack() as stack:
-        files = [stack.enter_context(open(fname)) for fname in filenames]
+def parseAndCollectKeyData(min_, max_, fileName, dataName, lines):
 
-        numInserts = []
-        for file in files:
-            numInserts.append(float(file.readlines()[-1].split()[4]))
-        print(' + '.join(str(i) for i in numInserts), "=", sum(numInserts))
-        print("Average of 25, 50, 75% quantile inserts are:", mean(numInserts), "inserts per second.")
-        #print(dirName, ":", mean(numInserts), file=sys.stderr)
-        print()
-
-        QuantileData[dataName][dirName] = mean(numInserts)
+    for key in ["ordinary", "25%", "50%", "75%"]:
+        if key in fileName:
+            try:
+                numInserts =  float(lines[-1].split()[4])
+                KeyData[dataName][min_][max_][key] = numInserts
+                break
+            except:
+                return
 
 
 def minMax(dataName):
-    maxStr = [str(i) for i in range(65, 85, 5)]
-    minStr = [str(i) for  i in range(60, 80, 5)]
 
     for i in range(len(minStr)):
         for j in range(i, len(maxStr)):
-            print(i, j, minStr[i], maxStr[j])
+            min_ = minStr[i]
+            max_ = maxStr[j]
+            print(i, j, min_, max_)
+            dirName = "../results/min" + min_ + "max" + max_ + "/" + dataName + "/"
+            reportDirectory(min_, max_, dirName, dataName)
 
-
-            dirName = "../results/min" + minStr[i] + "max" + maxStr[j] + "/" + dataName + "/"
-            reportDirectory(dirName, dataName)
 
 
 
@@ -75,53 +75,70 @@ def main(argv):
         minMax("longitudes")
         minMax("longlat")
 
-    elif cmd == "oldAll":
 
-        for i in range(40, 62, 2):
-            print("TESTCASE" + str(i))
-            reportDirectory("../results/" + str(i) + "/longitudes/", "longitudes")
-            reportDirectory("../results/" + str(i) + "/longlat/", "longlat")
-            print()
-
-        names = [
-            "min60max75",
-            "min60max70",
-            "min60max65",
-            "min55max75",
-            "min50max70",
-            "min45max65",
-        ]
-
-
-
-
-        for name in names:
-            print("TESTCASE" + name)
-            reportDirectory("../results/" + name + "/longitudes/", "longitudes")
-            reportDirectory("../results/" + name + "/longlat/", "longlat")
-            print()
-
-    elif "min" in cmd:
-        assert "max" in cmd, "Wrong command!"
-        reportDirectory("../results/" + (cmd) + "/longitudes/", "longitudes")
-        reportDirectory("../results/" + (cmd) + "/longlat/", "longlat")
-
-    else:
-        num =int(cmd)
-        assert 40 <= num <= 60, "Not in range!"
-        reportDirectory("../results/" + str(num) + "/longitudes/", "longitudes")
-        reportDirectory("../results/" + str(num) + "/longlat/", "longlat")
-
-    for dataName in QuantileData:
-        print("#####")
-        print(dataName, "25, 50, 75% quantile concentrated average result:")
-        for data in QuantileData[dataName]:
-            print(data, QuantileData[dataName][data])
+    for dataName in ["longitudes", "longlat"]:
         print()
-    print("Report finished.", file=sys.stderr)
+        print("###############################")
+        print(dataName, "#####################")
+        print("###############################")
+        print()
+        print("ordinary ###############################")
+        print('\t\t', '\t\t'.join(maxStr))
+        for i in range(4):
+            print(minStr[i], end='\t\t')
+            print('\t\t'*i, end="")
+            for j in range(i, 4):
+                data = (KeyData[dataName][minStr[i]][maxStr[j]]["ordinary"])
+                if type(data) is float:
+                    print(data, end='\t')
+                else:
+                    print("DATA NOT", end='\t')
 
+            print()
+
+        print("quantile ###############################")
+
+
+        print('\t\t', '\t\t\t\t'.join(maxStr))
+        for i in range(4):
+            print(minStr[i], end='\t\t')
+            print('\t\t\t\t'*i, end="")
+            for j in range(i, 4):
+                _25 = KeyData[dataName][minStr[i]][maxStr[j]]["25%"]
+                _50 = KeyData[dataName][minStr[i]][maxStr[j]]["50%"]
+                _75 = KeyData[dataName][minStr[i]][maxStr[j]]["75%"]
+                try:
+                    print(mean((_25, _50, _75)), end='\t\t')
+                except:
+                    print("NO VALUE AVAIL", end='\t\t')
+            print()
+
+
+    for dataName in ["longitudes", "longlat"]:
+        print()
+        print("##########" + dataName + "#########")
+        ordinary = KeyData[dataName]["60"]["80"]["ordinary"]
+        _25 = KeyData[dataName]["60"]["80"]["25%"]
+        _50 = KeyData[dataName]["60"]["80"]["50%"]
+        _75 = KeyData[dataName]["60"]["80"]["75%"]
+        skewed = mean((_25, _50, _75))
+        print("Ordinary:", ordinary)
+        print("Skewed:", skewed)
+        print("percentage: skewed / ordinary:", skewed / ordinary)
+        print()
+
+        _25 = KeyData[dataName]["70"]["80"]["25%"]
+        _50 = KeyData[dataName]["70"]["80"]["50%"]
+        _75 = KeyData[dataName]["70"]["80"]["75%"]
+        newSkewed = mean((_25, _50, _75))
+
+        print("Skewed:", skewed)
+        print("7080 Skewed:", newSkewed)
+        print("percentage: newSkewed / Skewed:", newSkewed / skewed)
+
+        print("newSkewed / ordinary:", newSkewed / ordinary)
 
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+     main(sys.argv)
